@@ -1,0 +1,17 @@
+{
+  "name": "React",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "dev",
+  "workspaceFolder": "/workspace",
+  "appPort": [
+    3000
+  ],
+  "extensions": [
+    "editorconfig.editorconfig"
+  ],
+  "postCreateCommand": "yarn install",
+  "remoteEnv": {
+    "HOST": "0.0.0.0"
+  },
+  "remoteUser": "node"
+}

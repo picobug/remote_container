@@ -1,0 +1,19 @@
+version: '3'
+services:
+  dev:
+    image: picobug/base
+    labels:
+      - 'traefik.http.routers.dev.rule=Host(`dev.pico.test`)'
+      - 'traefik.http.routers.dev.entrypoints=websecure'
+      - 'traefik.http.routers.dev.tls=true'
+      - 'traefik.http.services.dev.loadbalancer.server.port=3000'
+    volumes:
+      - ..:/workspace:cached
+      - ${HOME}/.vscode-server/next:/home/node/.vscode-server
+      - ${HOME}/.yarn/.cache:/home/node/.cache/yarn
+      - ${HOME}/.cache/typescript:/home/node/.cache/typescript
+    command: /bin/sh -c "while sleep 1000; do :; done"
+networks:
+  default:
+    external:
+      name: picobug
